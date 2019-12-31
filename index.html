@@ -8,6 +8,60 @@
     <title>Budget App</title>
 </head>
 <body>
-    
+    <section class="c-hero">
+        <div class="c-budget">
+            <p class="c-budget__text">Available Budget in %Month%</p>
+            <h1 class="c-budget__money">+ 2,345.64</h1>
+            <div class="c-budget__row">
+                <p class="c-budget__row-description">Expenses</p>
+                <p class="c-budget__row-money">+ 4,300.00</p>
+                <p class="c-budget__row-percentage">55%</p>
+            </div>
+            <div class="c-budget__row">
+                <p class="c-budget__row-description">Expenses</p>
+                <p class="c-budget__row-money">- 1,954.36</p>
+                <p class="c-budget__row-percentage">45%</p>
+            </div>
+        </div>
+    </section>
+    <section class="c-controllers">
+        <select class="c-controllers__type" name="" id="">
+            <option value="inc" selected>+</option>
+            <option value="exp" >-</option>
+        </select>
+        <input class="c-controllers__description" type="text"  placeholder="Add a description">
+        <input class="c-controllers__amount" type="number" placeholder="Amount">
+        <button class="c-controllers__add">+</button>
+    </section>
+    <main>
+        <div class="c-table">
+            <h2 class="c-table__title">Income</h2>
+            <div class="c-table__row">
+                <p class="c-table__row-description">Salary</p>
+                <p class="c-table__row-amount">+ 2,100.00</p>
+                <button class="c-table__row-button"></button>
+            </div>
+            <div class="c-table__row">
+                <p class="c-table__row-description">Sold Car</p>
+                <p class="c-table__row-amount">+ 1,500.00</p>
+                <button class="c-table__row-button"></button>
+            </div>
+        </div>
+        <div class="c-table">
+            <h2 class="c-table__title c-table__title--expense">Income</h2>
+            <div class="c-table__row">
+                <p class="c-table__row-description">Apartment rent</p>
+                <p class="c-table__row-amount c-table__row-amount--expense">- 900.00</p>
+                <p class="c-table__row-percentage c-table__row-percentage--expense">21%</p>
+                <button class="c-table__row-button c-table__row-button--expense"></button>
+            </div>
+            <div class="c-table__row">
+                <p class="c-table__row-description">Salary</p>
+                <p class="c-table__row-amount c-table__row-amount--expense">- 435.28</p>
+                <p class="c-table__row-percentage c-table__row-percentage--expense">10%</p>
+                <button class="c-table__row-button c-table__row-button--expense"></button>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
