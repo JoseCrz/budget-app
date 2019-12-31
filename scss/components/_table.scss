@@ -1,0 +1,67 @@
+.c-table {
+    width: 48%;
+    &__title {
+        text-transform: uppercase;
+        color: $color__income;
+
+        &--expense {
+            color: $color__expense;
+        }
+    }
+    
+    &__row {
+        font-size: 1.2em;
+        border-bottom: 1px solid darken(white, 10%);
+        border-top: 1px solid darken(white, 10%);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        
+        &:nth-of-type(even) {
+            background: $color__gray;
+        }
+
+    }
+    
+    &__row-division {
+        display: flex;
+        align-items: center;
+        
+    }
+
+    &__row-amount, &__row-percentage, &__row-button {
+        margin: 0 5px;
+    }
+
+    &__row-amount {
+        color: $color__income;
+        &--expense {
+            color: $color__expense;
+        }
+    }
+
+    &__row-percentage {
+        &--expense {
+            color: $color__expense;
+        }
+
+        span {
+            padding: 5px;
+            border-radius: 3px;
+            background: rgba($color__expense, .1);
+        }
+    }
+
+    &__row-button {
+        border: none;
+        background: transparent;
+        color: $color__income;
+        display: flex;
+        align-items: center;
+        font-size: 1.3em;
+
+        &--expense {
+            color: $color__expense;
+        }
+    }
+}

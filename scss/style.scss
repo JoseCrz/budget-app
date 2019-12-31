@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:  url('../fonts/icomoon.eot?nw4v1v');
-    src:  url('../fonts/icomoon.eot?nw4v1v#iefix') format('embedded-opentype'),
-      url('../fonts/icomoon.ttf?nw4v1v') format('truetype'),
-      url('../fonts/icomoon.woff?nw4v1v') format('woff'),
-      url('../fonts/icomoon.svg?nw4v1v#icomoon') format('svg');
+    src:  url('../fonts/icomoon.eot?b07vss');
+    src:  url('../fonts/icomoon.eot?b07vss#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?b07vss') format('truetype'),
+      url('../fonts/icomoon.woff?b07vss') format('woff'),
+      url('../fonts/icomoon.svg?b07vss#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -24,11 +24,15 @@
     -moz-osx-font-smoothing: grayscale;
   }
   
+  .icon-cancel-circle:before {
+    content: "\ea0d";
+  }
+
   .icon-checkmark:before {
     content: "\ea10";
   }
-  
 
+  
 $color__income: #4caf50;
 $color__expense: #fb8c00;
 $color__gray: #F6F6F6;
@@ -47,6 +51,8 @@ body {
 @import './components/hero';
 @import './components/budget';
 @import './components/controllers';
+@import './components/main';
+@import './components/table';
 
 // ? Utilities
 @import './utils/wrapper';

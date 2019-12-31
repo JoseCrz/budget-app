@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src: url("../fonts/icomoon.eot?nw4v1v");
-  src: url("../fonts/icomoon.eot?nw4v1v#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?nw4v1v") format("truetype"), url("../fonts/icomoon.woff?nw4v1v") format("woff"), url("../fonts/icomoon.svg?nw4v1v#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?b07vss");
+  src: url("../fonts/icomoon.eot?b07vss#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?b07vss") format("truetype"), url("../fonts/icomoon.woff?b07vss") format("woff"), url("../fonts/icomoon.svg?b07vss#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -18,6 +18,10 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cancel-circle:before {
+  content: "\ea0d";
 }
 
 .icon-checkmark:before {
@@ -181,6 +185,98 @@ body {
       -ms-flex-align: center;
           align-items: center;
   border-bottom: 3px solid #449d48;
+}
+
+.c-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.c-table {
+  width: 48%;
+}
+
+.c-table__title {
+  text-transform: uppercase;
+  color: #4caf50;
+}
+
+.c-table__title--expense {
+  color: #fb8c00;
+}
+
+.c-table__row {
+  font-size: 1.2em;
+  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 10px;
+}
+
+.c-table__row:nth-of-type(even) {
+  background: #F6F6F6;
+}
+
+.c-table__row-division {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.c-table__row-amount, .c-table__row-percentage, .c-table__row-button {
+  margin: 0 5px;
+}
+
+.c-table__row-amount {
+  color: #4caf50;
+}
+
+.c-table__row-amount--expense {
+  color: #fb8c00;
+}
+
+.c-table__row-percentage--expense {
+  color: #fb8c00;
+}
+
+.c-table__row-percentage span {
+  padding: 5px;
+  border-radius: 3px;
+  background: rgba(251, 140, 0, 0.1);
+}
+
+.c-table__row-button {
+  border: none;
+  background: transparent;
+  color: #4caf50;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.3em;
+}
+
+.c-table__row-button--expense {
+  color: #fb8c00;
+}
+
+.u-wrapper {
+  width: 1024px;
+  margin: 0 auto;
 }
 
 .u-wrapper--mini {

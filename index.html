@@ -39,35 +39,45 @@
             </div>
         </div>
     </section>
-    <main>
-        <div class="c-table">
-            <h2 class="c-table__title">Income</h2>
-            <div class="c-table__row">
-                <p class="c-table__row-description">Salary</p>
-                <p class="c-table__row-amount">+ 2,100.00</p>
-                <button class="c-table__row-button"></button>
+    <div class="u-wrapper">
+        <main class="c-main">
+            <div class="c-table">
+                <h2 class="c-table__title">Income</h2>
+                <div class="c-table__row">
+                    <p class="c-table__row-description">Salary</p>
+                    <div class="c-table__row-division">
+                        <p class="c-table__row-amount">+ 2,100.00</p>
+                        <button class="c-table__row-button"><i class="icon-cancel-circle"></i></button>
+                    </div>
+                </div>
+                <div class="c-table__row">
+                    <p class="c-table__row-description">Sold Car</p>
+                    <div class="c-table__row-division">
+                        <p class="c-table__row-amount">+ 1,500.00</p>
+                        <button class="c-table__row-button"><i class="icon-cancel-circle"></i></button>
+                    </div>
+                </div>
             </div>
-            <div class="c-table__row">
-                <p class="c-table__row-description">Sold Car</p>
-                <p class="c-table__row-amount">+ 1,500.00</p>
-                <button class="c-table__row-button"></button>
+            <div class="c-table">
+                <h2 class="c-table__title c-table__title--expense">Expenses</h2>
+                <div class="c-table__row">
+                    <p class="c-table__row-description">Apartment rent</p>
+                    <div class="c-table__row-division">
+                        <p class="c-table__row-amount c-table__row-amount--expense">- 900.00</p>
+                        <p class="c-table__row-percentage c-table__row-percentage--expense"><span>21%</span></p>
+                        <button class="c-table__row-button c-table__row-button--expense"><i class="icon-cancel-circle"></i></button>
+                    </div>
+                </div>
+                <div class="c-table__row">
+                    <p class="c-table__row-description">Salary</p>
+                    <div class="c-table__row-division">
+                        <p class="c-table__row-amount c-table__row-amount--expense">- 435.28</p>
+                        <p class="c-table__row-percentage c-table__row-percentage--expense"><span>10%</span></p>
+                        <button class="c-table__row-button c-table__row-button--expense"><i class="icon-cancel-circle"></i></button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="c-table">
-            <h2 class="c-table__title c-table__title--expense">Income</h2>
-            <div class="c-table__row">
-                <p class="c-table__row-description">Apartment rent</p>
-                <p class="c-table__row-amount c-table__row-amount--expense">- 900.00</p>
-                <p class="c-table__row-percentage c-table__row-percentage--expense">21%</p>
-                <button class="c-table__row-button c-table__row-button--expense"></button>
-            </div>
-            <div class="c-table__row">
-                <p class="c-table__row-description">Salary</p>
-                <p class="c-table__row-amount c-table__row-amount--expense">- 435.28</p>
-                <p class="c-table__row-percentage c-table__row-percentage--expense">10%</p>
-                <button class="c-table__row-button c-table__row-button--expense"></button>
-            </div>
-        </div>
-    </main>
+        </main>
+    </div>
 </body>
 </html>
