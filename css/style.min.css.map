@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,CAAC,AAAC,CACE,UAAU,CAAE,UAAU,CACzB,AAED,AAAA,IAAI,AAAC,CACD,MAAM,CAAE,CAAC,CACT,OAAO,CAAE,CAAC,CACb,ACPD,AAAA,OAAO,AAAC,CACJ,UAAU,CAAE,+CAA+C,CAC3D,UAAU,CAAE,KAAK,CACpB",
     "sources": [
-        "../scss/style.scss"
+        "../scss/style.scss",
+        "../scss/components/_hero.scss"
     ],
     "names": [],
     "file": "style.min.css"
