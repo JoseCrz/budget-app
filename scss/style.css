@@ -1,6 +1,7 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
 }
 
 body {
@@ -9,8 +10,75 @@ body {
 }
 
 .c-hero {
-  background: -webkit-gradient(linear, left bottom, right top, from(#396afc), to(#2948ff));
-  background: linear-gradient(to top right, #396afc, #2948ff);
-  min-height: 350px;
+  background: #0575E6;
+  min-height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.c-budget {
+  color: white;
+}
+
+.c-budget__text {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.c-budget__money {
+  font-size: 3.5em;
+  text-align: center;
+}
+
+.c-budget__row {
+  border-radius: 3px;
+  background: #4caf50;
+  font-size: 1.3em;
+  text-align: center;
+  margin: 10px 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-areas: "description . . . amount percentage";
+}
+
+.c-budget__row--expense {
+  background: #fb8c00;
+}
+
+.c-budget__row-description {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: description;
+}
+
+.c-budget__row-amount {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+  grid-area: amount;
+}
+
+.c-budget__row-percentage {
+  -ms-grid-row: 1;
+  -ms-grid-column: 6;
+  grid-area: percentage;
+}
+
+.c-budget__row-percentage span {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.u-wrapper--mini {
+  width: 600px;
 }
 /*# sourceMappingURL=style.css.map */

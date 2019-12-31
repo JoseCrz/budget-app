@@ -1,0 +1,47 @@
+.c-budget {
+    color: white;
+    &__text {
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    &__money {
+        font-size: 3.5em;
+        text-align: center;
+    }
+
+    &__row {
+        border-radius: 3px;
+        background: #4caf50;
+        font-size: 1.3em;
+        text-align: center;
+        margin: 10px 0;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-areas: "description . . . amount percentage";
+        
+        &--expense {
+            background: #fb8c00;
+        }
+        &-description {
+            grid-area: description;
+        }
+
+        &-amount {
+            grid-area: amount;
+        }
+
+        &-percentage {
+            grid-area: percentage;
+            
+            span {
+                background: rgba(#fff, .3);
+                padding: 5px;
+                border-radius: 3px;
+            }
+        }
+
+
+    }
+
+}

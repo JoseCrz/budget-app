@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.min.css">
     <title>Budget App</title>
 </head>
 <body>
     <section class="c-hero">
-        <div class="c-budget">
-            <p class="c-budget__text">Available Budget in %Month%</p>
-            <h1 class="c-budget__money">+ 2,345.64</h1>
-            <div class="c-budget__row">
-                <p class="c-budget__row-description">Expenses</p>
-                <p class="c-budget__row-money">+ 4,300.00</p>
-                <p class="c-budget__row-percentage">55%</p>
-            </div>
-            <div class="c-budget__row">
-                <p class="c-budget__row-description">Expenses</p>
-                <p class="c-budget__row-money">- 1,954.36</p>
-                <p class="c-budget__row-percentage">45%</p>
+        <div class="u-wrapper u-wrapper--mini">
+            <div class="c-budget">
+                <p class="c-budget__text">Available Budget in %Month%</p>
+                <h1 class="c-budget__money">+ 2,345.64</h1>
+                <div class="c-budget__row">
+                    <p class="c-budget__row-description">Income</p>
+                    <p class="c-budget__row-amount">+ 4,300.00</p>
+                </div>
+                <div class="c-budget__row c-budget__row--expense">
+                    <p class="c-budget__row-description">Expenses</p>
+                    <p class="c-budget__row-amount">- 1,954.36</p>
+                    <p class="c-budget__row-percentage"><span>45%</span></p>
+                </div>
             </div>
         </div>
     </section>
