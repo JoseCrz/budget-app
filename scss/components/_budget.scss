@@ -12,7 +12,7 @@
 
     &__row {
         border-radius: 3px;
-        background: #4caf50;
+        background: $color__income;
         font-size: 1.3em;
         text-align: center;
         margin: 10px 0;
@@ -21,7 +21,7 @@
         grid-template-areas: "description . . . amount percentage";
         
         &--expense {
-            background: #fb8c00;
+            background: $color__expense;
         }
         &-description {
             grid-area: description;

@@ -1,3 +1,38 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?nw4v1v');
+    src:  url('../fonts/icomoon.eot?nw4v1v#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?nw4v1v') format('truetype'),
+      url('../fonts/icomoon.woff?nw4v1v') format('woff'),
+      url('../fonts/icomoon.svg?nw4v1v#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-checkmark:before {
+    content: "\ea10";
+  }
+  
+
+$color__income: #4caf50;
+$color__expense: #fb8c00;
+$color__gray: #F6F6F6;
+
 * {
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
@@ -11,6 +46,8 @@ body {
 // ? Components
 @import './components/hero';
 @import './components/budget';
+@import './components/controllers';
 
 // ? Utilities
 @import './utils/wrapper';
+@import './utils/reset';

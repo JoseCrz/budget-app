@@ -1,0 +1,59 @@
+.c-controllers {
+    background: $color__gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    font-size: 1.3em;
+    border-bottom: 1px solid darken($color__gray, 10%);
+
+    &__container {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-areas: "type description description description description description amount amount amount add";
+    }
+
+    &__type, &__description, &__amount {
+        padding: 6px 12px;
+        border: 1px solid darken($color__gray, 15%);
+        border-radius: 3px;
+        outline: none;
+        &:focus {
+            border-color: $color__income;
+        }
+    }
+
+    &__type {
+        grid-area: type;
+        background: white;
+    }
+
+    &__description {
+        grid-area: description;
+    }
+
+    &__amount {
+        grid-area: amount;
+    }
+
+    &__add {
+        grid-area: add;
+        color: white;
+        background: $color__income;
+        border: none;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 3px solid darken($color__income, 5%);
+        // transition: cubic-bezier(0.215, 0.610, 0.355, 1) .3s;
+        // :hover {
+        //     transform: translateY(-5px);
+        // }
+        
+        // :active {
+        //     transform: translateY(5px);
+        // }
+    }
+}
