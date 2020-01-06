@@ -1,23 +1,14 @@
 // ? Budget Controller
 const budgetController = (function () {
-    let x = 23
-    
-    const add = function (a) {
-        return x + a
-    }
-    
-    return {
-        publicTest : function (b) {
-            return add(b)
-        }
-    }
+   
 })()
 
 // ? UI Controller
 // * Receives data from the UI and sends it to it.
 const uiController = (function () {
     
-    const DOMSelectors = {
+    
+    const DOMSelectors = {      // Object that will make refactoring easy if needed
         inputType: '#input-type',
         inputDescription: '#input-description',
         inputAmount: '#input-amount',
@@ -25,25 +16,38 @@ const uiController = (function () {
     }
 
     return {
-        getInputs: function () {
+        
+        getInputs: function () {        //Gets the data from the different UI inputs
             return {
                 type: document.querySelector(DOMSelectors.inputType).value, //either "income" or "expense"
                 description: document.querySelector(DOMSelectors.inputDescription).value,
                 amount: document.querySelector(DOMSelectors.inputAmount).value
             }
         },
-        getDOMSelectors: function () {
+
+        getDOMSelectors: function () {      //Allows outer controllers to have access to DOM Selectors Object
             return DOMSelectors
         }
     }
 })()
 
 // ? Global App Controller
-const controller = (function (budgetCntlr, uiCntrlr) {
-    const DOMSelectors = uiController.getDOMSelectors()
+const globalController = (function (budgetCntlr, uiCntrlr) {
+    
+    const setupEventListener = function () {        //function that setups all the event listeners needed to use the app
+        const DOMSelectors = uiController.getDOMSelectors()
+        
+        document.querySelector(DOMSelectors.buttonAdd).addEventListener('click', ctrlrAddItem)
+        document.addEventListener('keypress', function (event) {
+            if (event.keyCode === 13) {
+                ctrlrAddItem()
+            }
+        })
+
+    }
 
     const ctrlrAddItem = function () {
-        // 1. Get the field input data
+        // * 1. Get the field input data
         const inputs = uiController.getInputs()
         console.log(inputs)
 
@@ -55,12 +59,13 @@ const controller = (function (budgetCntlr, uiCntrlr) {
         console.log('It works!')
     }
 
-    document.querySelector(DOMSelectors.buttonAdd).addEventListener('click', ctrlrAddItem)
-    
-    document.addEventListener('keypress', function (event) {
-        if (event.keyCode === 13) {
-            ctrlrAddItem()
+    return {
+        initApp: function () {
+            console.log('App has started!')
+            setupEventListener()
         }
-    })
+    }
 
 })(budgetController, uiController)
+
+globalController.initApp()
