@@ -57,8 +57,8 @@
         
         &:active {
             transform: translateY(3px);
-            background: darken($color__income, 10%);
-            border-bottom: 3px solid darken($color__income, 15%);
+            background: darken($color__income, 5%);
+            border-bottom: 3px solid darken($color__income, 10%);
         }
     }
 }

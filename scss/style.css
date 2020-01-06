@@ -198,8 +198,8 @@ body {
 .c-controllers__add:active {
   -webkit-transform: translateY(3px);
           transform: translateY(3px);
-  background: #3d8b40;
-  border-bottom: 3px solid #357a38;
+  background: #449d48;
+  border-bottom: 3px solid #3d8b40;
 }
 
 .c-main {
