@@ -106,9 +106,19 @@ const uiController = (function () {
                 amount: document.querySelector(DOMSelectors.inputAmount).value
             }
         },
+
+        clearInputs: function () {      // Sets the inputs values back to empty
+            const inputs = document.querySelectorAll(`${DOMSelectors.inputDescription}, ${DOMSelectors.inputAmount}`)
+            inputs.forEach(input => {
+                input.value = ''
+            })
+            inputs[0].focus()
+        },
+
         getDOMSelectors: function () {      //Allows outer controllers to have access to DOM Selectors Object
             return DOMSelectors
         },
+
         addListItem: function (item, type) {        //inserts the corresping row filled with the recieve data into the corresponding DOM Element (table)
             let table
             
@@ -152,6 +162,9 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
 
         // * 3. Add the item to the UI
         uiCntrlr.addListItem(newItem, inputData.type)
+
+        // * 4. Clear input fields
+        uiCntrlr.clearInputs()
 
         // TODO 4. Calculate the budget
         // TODO 5. Display the budget in the UI
