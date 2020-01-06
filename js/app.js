@@ -103,7 +103,7 @@ const uiController = (function () {
             return {
                 type: document.querySelector(DOMSelectors.inputType).value, //either "income" or "expense"
                 description: document.querySelector(DOMSelectors.inputDescription).value,
-                amount: document.querySelector(DOMSelectors.inputAmount).value
+                amount: parseFloat(document.querySelector(DOMSelectors.inputAmount).value)
             }
         },
 
@@ -152,19 +152,30 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
         })
     }
 
+    const validInput = ({description, amount}) => description !== '' &&  !isNaN(amount) && amount > 0
+    
+
     const ctrlrAddItem = function () {
         // * 1. Get the field input data
         const inputData = uiController.getInputs()
-        console.log(inputData)
+        console.log('input data:', inputData)
+        
+        // * 2. Validate input
+        if (validInput(inputData)) {
+            
+            // * 3. Add the item to the budget controller
+            const newItem = budgetCntlr.addItem(inputData)
+    
+            // * 4. Add the item to the UI
+            uiCntrlr.addListItem(newItem, inputData.type)
+    
+            // * 5. Clear input fields
+            uiCntrlr.clearInputs()
+        } else {
+            alert('Invalid input')
+        }
 
-        // * 2. Add the item to the budget controller
-        const newItem = budgetCntlr.addItem(inputData)
 
-        // * 3. Add the item to the UI
-        uiCntrlr.addListItem(newItem, inputData.type)
-
-        // * 4. Clear input fields
-        uiCntrlr.clearInputs()
 
         // TODO 4. Calculate the budget
         // TODO 5. Display the budget in the UI
