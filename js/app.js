@@ -16,11 +16,14 @@ const budgetController = (function () {
 // ? UI Controller
 // * Receives data from the UI and sends it to it.
 const uiController = (function () {
+    
     const DOMSelectors = {
         inputType: '#input-type',
         inputDescription: '#input-description',
-        inputAmount: '#input-amount'  
+        inputAmount: '#input-amount',
+        buttonAdd: '#button-add' 
     }
+
     return {
         getInputs: function () {
             return {
@@ -28,13 +31,17 @@ const uiController = (function () {
                 description: document.querySelector(DOMSelectors.inputDescription).value,
                 amount: document.querySelector(DOMSelectors.inputAmount).value
             }
+        },
+        getDOMSelectors: function () {
+            return DOMSelectors
         }
     }
 })()
 
 // ? Global App Controller
 const controller = (function (budgetCntlr, uiCntrlr) {
-    
+    const DOMSelectors = uiController.getDOMSelectors()
+
     const ctrlrAddItem = function () {
         // 1. Get the field input data
         const inputs = uiController.getInputs()
@@ -48,7 +55,7 @@ const controller = (function (budgetCntlr, uiCntrlr) {
         console.log('It works!')
     }
 
-    document.querySelector('#button-add').addEventListener('click', ctrlrAddItem)
+    document.querySelector(DOMSelectors.buttonAdd).addEventListener('click', ctrlrAddItem)
     
     document.addEventListener('keypress', function (event) {
         if (event.keyCode === 13) {
