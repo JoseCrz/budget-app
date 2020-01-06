@@ -71,7 +71,30 @@ const uiController = (function () {
         inputType: '#input-type',
         inputDescription: '#input-description',
         inputAmount: '#input-amount',
-        buttonAdd: '#button-add' 
+        buttonAdd: '#button-add',
+        tableIncome: '#table-income',
+        tableExpense: '#table-expense'
+    }
+
+    function createRow ({id, description, amount}, type) {      // function that returns an HTML element (row) filled with the corresponding data from the object
+        if (type === 'income') {
+            return `<div class="c-table__row" id="income-${id}">
+                        <p class="c-table__row-description">${description}</p>
+                        <div class="c-table__row-division">
+                            <p class="c-table__row-amount">+ ${amount}</p>
+                            <button class="c-table__row-button"><i class="icon-cancel-circle"></i></button>
+                        </div>
+                    </div>`
+        } else if (type === 'expense') {
+            return `<div class="c-table__row" id="expense-${id}">
+                        <p class="c-table__row-description">${description}</p>
+                        <div class="c-table__row-division">
+                            <p class="c-table__row-amount c-table__row-amount--expense">- ${amount}</p>
+                            <p class="c-table__row-percentage c-table__row-percentage--expense"><span>21%</span></p>
+                            <button class="c-table__row-button c-table__row-button--expense"><i class="icon-cancel-circle"></i></button>
+                        </div>
+                    </div>`
+        }
     }
 
     return {
@@ -83,9 +106,24 @@ const uiController = (function () {
                 amount: document.querySelector(DOMSelectors.inputAmount).value
             }
         },
-
         getDOMSelectors: function () {      //Allows outer controllers to have access to DOM Selectors Object
             return DOMSelectors
+        },
+        addListItem: function (item, type) {        //inserts the corresping row filled with the recieve data into the corresponding DOM Element (table)
+            let table
+            
+            // get the correct DOM Element (table)
+            if (type === 'income') {
+                table = DOMSelectors.tableIncome
+            } else if (type === 'expense') {
+                table = DOMSelectors.tableExpense
+            }
+
+            // create the row to insert into the DOM
+            const row = createRow(item, type)
+            
+            // insert the row into the table
+            document.querySelector(table).insertAdjacentHTML('beforeend', row)
         }
     }
 })()
@@ -112,9 +150,11 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
         // * 2. Add the item to the budget controller
         const newItem = budgetCntlr.addItem(inputData)
 
-        // TODO 3. Add the item to the UI
+        // * 3. Add the item to the UI
+        uiCntrlr.addListItem(newItem, inputData.type)
+
         // TODO 4. Calculate the budget
-        // TODO 5. Display the budgey in the UI
+        // TODO 5. Display the budget in the UI
         
         // console.log('It works!')
     }
