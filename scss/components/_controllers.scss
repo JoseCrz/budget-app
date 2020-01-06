@@ -47,13 +47,18 @@
         justify-content: center;
         align-items: center;
         border-bottom: 3px solid darken($color__income, 5%);
-        // transition: cubic-bezier(0.215, 0.610, 0.355, 1) .3s;
-        // :hover {
-        //     transform: translateY(-5px);
-        // }
+        transition: cubic-bezier(0.215, 0.610, 0.355, 1) .2s;
+        outline: none;
+        &:hover {
+            transform: translateY(-3px);
+            // background: lighten($color__income, 5%);
+            // border-bottom: 3px solid darken(lighten($color__income, 5%), 5%);
+        }
         
-        // :active {
-        //     transform: translateY(5px);
-        // }
+        &:active {
+            transform: translateY(3px);
+            background: darken($color__income, 10%);
+            border-bottom: 3px solid darken($color__income, 15%);
+        }
     }
 }

@@ -185,6 +185,21 @@ body {
       -ms-flex-align: center;
           align-items: center;
   border-bottom: 3px solid #449d48;
+  -webkit-transition: cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s;
+  transition: cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s;
+  outline: none;
+}
+
+.c-controllers__add:hover {
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+}
+
+.c-controllers__add:active {
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+  background: #3d8b40;
+  border-bottom: 3px solid #357a38;
 }
 
 .c-main {
