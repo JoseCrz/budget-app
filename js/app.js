@@ -1,12 +1,38 @@
 // ? Budget Controller
 const budgetController = (function () {
-   
+    
+    class Income {
+        constructor (id, description, amount) {
+            this.id = id
+            this.description = description
+            this.amount = amount
+        }
+    }
+    
+    class Expense {
+        constructor (id, description, amount) {
+            this.id = id
+            this.description = description
+            this.amount = amount
+        }
+    }
+
+    const data = {
+        allItems: {
+            incomes: [],
+            expenses: []
+        },
+        totals: {
+            income: 0,
+            expense: 0
+        }
+    }
+
 })()
 
 // ? UI Controller
 // * Receives data from the UI and sends it to it.
 const uiController = (function () {
-    
     
     const DOMSelectors = {      // Object that will make refactoring easy if needed
         inputType: '#input-type',
@@ -43,7 +69,6 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
                 ctrlrAddItem()
             }
         })
-
     }
 
     const ctrlrAddItem = function () {
