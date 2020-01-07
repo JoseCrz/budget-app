@@ -112,7 +112,11 @@ const uiController = (function () {
         inputAmount: '#input-amount',
         buttonAdd: '#button-add',
         tableIncome: '#table-income',
-        tableExpense: '#table-expense'
+        tableExpense: '#table-expense',
+        textBudget: '#text-budget',
+        textIncome: '#text-income',
+        textExpense: '#text-expense',
+        textPercentage: '#text-percentage'
     }
 
     function createRow ({id, description, amount}, type) {      // function that returns an HTML element (row) filled with the corresponding data from the object
@@ -171,6 +175,17 @@ const uiController = (function () {
             
             // insert the row into the table
             document.querySelector(table).insertAdjacentHTML('beforeend', row)
+        },
+        displayBudget: function ({budget, totalIncome, totalExpense, expPercentage}) {      // recieves the budget data structure and display its content into the corresponding UI Elements
+            document.querySelector(DOMSelectors.textBudget).textContent = budget
+            document.querySelector(DOMSelectors.textIncome).textContent = `+ ${totalIncome}`
+            document.querySelector(DOMSelectors.textExpense).textContent = `- ${totalExpense}`
+            
+            if (expPercentage > 0) {
+                document.querySelector(DOMSelectors.textPercentage).textContent = `${expPercentage}%`
+            } else {
+                document.querySelector(DOMSelectors.textPercentage).textContent = '~'
+            }
         }
     }
 })()
@@ -200,7 +215,7 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
         const budget = budgetCntlr.getBudget()
 
         // TODO 3. Display the budget in the UI
-        console.log('budget:', budget)
+        uiCntrlr.displayBudget(budget)
     }
     const ctrlrAddItem = function () {
         // * 1. Get the field input data
