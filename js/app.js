@@ -154,9 +154,7 @@ const uiController = (function () {
             inputs[0].focus()
         },
 
-        getDOMSelectors: function () {      //Allows outer controllers to have access to DOM Selectors Object
-            return DOMSelectors
-        },
+        getDOMSelectors: () => DOMSelectors,    //Allows outer controllers to have access to DOM Selectors Object
 
         addListItem: function (item, type) {        //inserts the corresping row filled with the recieve data into the corresponding DOM Element (table)
             let table
