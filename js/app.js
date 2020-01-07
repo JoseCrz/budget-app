@@ -25,7 +25,19 @@ const budgetController = (function () {
         totals: {
             income: 0,
             expense: 0
-        }
+        },
+        budget: 0,
+        expPercentage: -1
+    }
+
+    const generateTotals = function (type) {        // Generates the total according to the types and stores in its correspinding total
+        let sum = 0
+            
+        data.allItems[type].forEach(element => {
+            sum += element.amount
+        })
+
+        data.totals[type] = sum
     }
 
     return {
@@ -57,6 +69,33 @@ const budgetController = (function () {
             // return the object
             return newItem
         },
+
+        calculateBudget: function () {
+            // * 1. generate totals
+            generateTotals('income')
+            generateTotals('expense')
+            
+            // * 2. Calculate expense percentage and store it
+            if (data.totals.income > 0 ) {
+                data.expPercentage = Math.round((data.totals.expense / data.totals.income) * 100)
+            } else {
+                data.expPercentage = -1
+            }
+            
+            // * 3. calculate the budget and store it
+            data.budget = data.totals.income - data.totals.expense
+
+        },
+
+        getBudget: function () {
+            return {
+                budget: data.budget,
+                totalIncome: data.totals.income,
+                totalExpense: data.totals.expense,
+                expPercentage: data.expPercentage
+            }
+        },
+
         seeData: function () {
             console.log(data)
         }
@@ -154,7 +193,17 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
 
     const validInput = ({description, amount}) => description !== '' &&  !isNaN(amount) && amount > 0
     
+    const updateBudget = function () {
 
+        // * 1. Calculate the budget
+        budgetCntlr.calculateBudget()
+
+        // * 2. Get the budget
+        const budget = budgetCntlr.getBudget()
+
+        // TODO 3. Display the budget in the UI
+        console.log('budget:', budget)
+    }
     const ctrlrAddItem = function () {
         // * 1. Get the field input data
         const inputData = uiController.getInputs()
@@ -175,11 +224,8 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
             alert('Invalid input')
         }
 
-
-
-        // TODO 4. Calculate the budget
-        // TODO 5. Display the budget in the UI
-        
+        // * 6. Update budget
+        updateBudget()
         // console.log('It works!')
     }
 
