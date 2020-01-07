@@ -46,6 +46,7 @@
         }
 
         span {
+            pointer-events: none;
             padding: 5px;
             border-radius: 3px;
             background: rgba($color__expense, .1);
@@ -59,9 +60,17 @@
         display: flex;
         align-items: center;
         font-size: 1.3em;
+        outline: none;
+
+        &:hover {
+            color: lighten($color__income, 10%);
+        }
 
         &--expense {
             color: $color__expense;
+            &:hover {
+                color: lighten($color__expense, 10%);
+            }
         }
     }
 }

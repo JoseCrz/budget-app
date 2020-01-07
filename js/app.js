@@ -70,6 +70,19 @@ const budgetController = (function () {
             return newItem
         },
 
+        deleteItem: function (type, id) {
+            const idsArray = data.allItems[type].map(item => {
+                return item.id
+            })
+
+            const desiredIndex = idsArray.indexOf(id)
+
+            if (desiredIndex !== -1) {
+                data.allItems[type].splice(desiredIndex, 1)
+                console.log('Element deleted!')
+            }
+        },
+
         calculateBudget: function () {
             // * 1. generate totals
             generateTotals('income')
@@ -116,7 +129,8 @@ const uiController = (function () {
         textBudget: '#text-budget',
         textIncome: '#text-income',
         textExpense: '#text-expense',
-        textPercentage: '#text-percentage'
+        textPercentage: '#text-percentage',
+        main: '#main'
     }
 
     function createRow ({id, description, amount}, type) {      // function that returns an HTML element (row) filled with the corresponding data from the object
@@ -202,6 +216,8 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
                 ctrlrAddItem()
             }
         })
+
+        document.querySelector(DOMSelectors.main).addEventListener('click', ctrlrDeleteItem)
     }
 
     const validInput = ({description, amount}) => description !== '' &&  !isNaN(amount) && amount > 0
@@ -214,7 +230,7 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
         // * 2. Get the budget
         const budget = budgetCntlr.getBudget()
 
-        // TODO 3. Display the budget in the UI
+        // * 3. Display the budget in the UI
         uiCntrlr.displayBudget(budget)
     }
     const ctrlrAddItem = function () {
@@ -240,6 +256,22 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
         // * 6. Update budget
         updateBudget()
         // console.log('It works!')
+    }
+
+    const ctrlrDeleteItem = function (event) {
+        const element = event.target.parentNode.parentNode.parentNode
+        const elementClass = element.classList[0]
+        
+        // console.log(elementClass)
+
+        if (elementClass === 'c-table__row') {
+            const elementID = element.id
+            const splitedID = elementID.split('-')
+            const type = splitedID[0]
+            const id = parseInt(splitedID[1])
+
+            budgetCntlr.deleteItem(type, id)
+        }
     }
 
     return {

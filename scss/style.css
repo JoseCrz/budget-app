@@ -267,6 +267,7 @@ body {
 }
 
 .c-table__row-percentage span {
+  pointer-events: none;
   padding: 5px;
   border-radius: 3px;
   background: rgba(251, 140, 0, 0.1);
@@ -283,10 +284,19 @@ body {
       -ms-flex-align: center;
           align-items: center;
   font-size: 1.3em;
+  outline: none;
+}
+
+.c-table__row-button:hover {
+  color: #6ec071;
 }
 
 .c-table__row-button--expense {
   color: #fb8c00;
+}
+
+.c-table__row-button--expense:hover {
+  color: #ffa32f;
 }
 
 .u-wrapper {
