@@ -6,6 +6,7 @@ const budgetController = (function () {
             this.id = id
             this.description = description
             this.amount = amount
+            this.percentage = -1
         }
     }
     
@@ -15,6 +16,18 @@ const budgetController = (function () {
             this.description = description
             this.amount = amount
         }
+    }
+
+    Expense.prototype.calculatePercentage = function () {
+        if (data.totals.income > 0 ) {
+            this.percentage = Math.round((this.amount / data.totals.income) * 100)
+        } else {
+            this.percentage = -1
+        }
+    }
+
+    Expense.prototype.getPercentage = function () {
+        return this.percentage
     }
 
     const data = {
@@ -98,6 +111,18 @@ const budgetController = (function () {
             // * 3. calculate the budget and store it
             data.budget = data.totals.income - data.totals.expense
 
+        },
+
+        calculatePercentages: function () {
+            data.allItems.expense.forEach(element => {
+                element.calculatePercentage()
+            })
+        },
+
+        getPercentages: function () {
+            return data.allItems.expense.map(element => {
+                return element.getPercentage()
+            })
         },
 
         getBudget: function () {
@@ -245,6 +270,19 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
         // * 3. Display the budget in the UI
         uiCntrlr.displayBudget(budget)
     }
+
+    const updatePercentages = function () {
+        // TODO 1. Calculate the percentages
+        budgetCntlr.calculatePercentages()
+
+        // TODO 2. Get dem percentages
+        const allPercentages = budgetCntlr.getPercentages()
+
+        // TODO 3. Update UI with new percentages
+        console.log(allPercentages)
+
+    }
+
     const ctrlrAddItem = function () {
         // * 1. Get the field input data
         const inputData = uiController.getInputs()
@@ -261,13 +299,18 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
     
             // * 5. Clear input fields
             uiCntrlr.clearInputs()
+            
+            // * 6. Update budget
+            updateBudget()
+    
+            // * 7. Update percentages
+            updatePercentages()
+            // console.log('It works!')
+
         } else {
             alert('Invalid input')
         }
 
-        // * 6. Update budget
-        updateBudget()
-        // console.log('It works!')
     }
 
     const ctrlrDeleteItem = function (event) {
@@ -291,6 +334,9 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
 
             // * 3. Update budget
             updateBudget()
+
+            // * 4. Update percentages
+            updatePercentages()
         }
 
     }
