@@ -190,6 +190,18 @@ const uiController = (function () {
             // insert the row into the table
             document.querySelector(table).insertAdjacentHTML('beforeend', row)
         },
+        deleteListItem: function (type, elementId) {        //Deletes the desired row from the correspinding table
+            let desiredTable
+            
+            if (type === 'income') {
+                desiredTable = document.querySelector(DOMSelectors.tableIncome)
+            } else if (type === 'expense') {
+                desiredTable = document.querySelector(DOMSelectors.tableExpense)
+            }
+            
+            desiredTable.removeChild(document.getElementById(elementId))
+
+        },
         displayBudget: function ({budget, totalIncome, totalExpense, expPercentage}) {      // recieves the budget data structure and display its content into the corresponding UI Elements
             document.querySelector(DOMSelectors.textBudget).textContent = budget
             document.querySelector(DOMSelectors.textIncome).textContent = `+ ${totalIncome}`
@@ -259,19 +271,28 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
     }
 
     const ctrlrDeleteItem = function (event) {
+        
+        // * 0. Confirm that the click element its a valid row 
         const element = event.target.parentNode.parentNode.parentNode
         const elementClass = element.classList[0]
-        
         // console.log(elementClass)
-
         if (elementClass === 'c-table__row') {
+            
+            // * 1. Delete item from the budget
             const elementID = element.id
             const splitedID = elementID.split('-')
             const type = splitedID[0]
             const id = parseInt(splitedID[1])
 
             budgetCntlr.deleteItem(type, id)
+
+            // * 2. Delete item from the UI
+            uiCntrlr.deleteListItem(type, elementID)
+
+            // * 3. Update budget
+            updateBudget()
         }
+
     }
 
     return {
