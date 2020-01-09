@@ -155,6 +155,7 @@ const uiController = (function () {
         textIncome: '#text-income',
         textExpense: '#text-expense',
         textPercentage: '#text-percentage',
+        textRowPercentage: '.c-table__row-percentage--expense>span',
         main: '#main'
     }
 
@@ -227,6 +228,15 @@ const uiController = (function () {
             desiredTable.removeChild(document.getElementById(elementId))
 
         },
+        updatePercentages: function (percentages) {
+            percentageLabels = document.querySelectorAll(DOMSelectors.textRowPercentage)
+            console.log(percentageLabels)
+            percentageLabels.forEach((label, index) => {
+                label.textContent = `${percentages[index]}%`
+            })
+
+        },
+
         displayBudget: function ({budget, totalIncome, totalExpense, expPercentage}) {      // recieves the budget data structure and display its content into the corresponding UI Elements
             document.querySelector(DOMSelectors.textBudget).textContent = budget
             document.querySelector(DOMSelectors.textIncome).textContent = `+ ${totalIncome}`
@@ -272,14 +282,14 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
     }
 
     const updatePercentages = function () {
-        // TODO 1. Calculate the percentages
+        // * 1. Calculate the percentages
         budgetCntlr.calculatePercentages()
 
-        // TODO 2. Get dem percentages
+        // * 2. Get percentages
         const allPercentages = budgetCntlr.getPercentages()
 
-        // TODO 3. Update UI with new percentages
-        console.log(allPercentages)
+        // * 3. Update UI with new percentages
+        uiCntrlr.updatePercentages(allPercentages)
 
     }
 
