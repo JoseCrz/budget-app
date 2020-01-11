@@ -156,7 +156,8 @@ const uiController = (function () {
         textExpense: '#text-expense',
         textPercentage: '#text-percentage',
         textRowPercentage: '.c-table__row-percentage--expense>span',
-        main: '#main'
+        main: '#main',
+        textDate: '#text-date'
     }
 
     function createRow ({id, description, amount}, type) {      // function that returns an HTML element (row) filled with the corresponding data from the object
@@ -247,6 +248,13 @@ const uiController = (function () {
             } else {
                 document.querySelector(DOMSelectors.textPercentage).textContent = '~'
             }
+        },
+        displayDate: function () {
+            const now = new Date()
+            const year = now.getFullYear()
+            const month = now.getMonth()
+            const months = ['January', 'February', 'March,', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            document.querySelector(DOMSelectors.textDate).textContent = `Available budget in ${months[month]}, ${year}`
         }
     }
 })()
@@ -354,6 +362,7 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
     return {
         initApp: function () {
             console.log('App has started!')
+            uiCntrlr.displayDate()
             setupEventListener()
         }
     }
