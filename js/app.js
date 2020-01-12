@@ -198,6 +198,14 @@ const uiController = (function () {
             })
             inputs[0].focus()
         },
+        
+        changeInputs: function () {        // Changes color of input elements in UI 
+            const inputs = document.querySelectorAll(`${DOMSelectors.inputType}, ${DOMSelectors.inputAmount}, ${DOMSelectors.inputDescription}, ${DOMSelectors.buttonAdd}`)
+            inputs.forEach(input => {
+                input.classList.toggle(`${input.classList[0]}--expense`)
+            })
+            console.log(inputs)
+        },
 
         getDOMSelectors: () => DOMSelectors,    //Allows outer controllers to have access to DOM Selectors Object
 
@@ -273,6 +281,7 @@ const globalController = (function (budgetCntlr, uiCntrlr) {
         })
 
         document.querySelector(DOMSelectors.main).addEventListener('click', ctrlrDeleteItem)
+        document.querySelector(DOMSelectors.inputType).addEventListener('change', uiCntrlr.changeInputs)
     }
 
     const validInput = ({description, amount}) => description !== '' &&  !isNaN(amount) && amount > 0
